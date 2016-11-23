@@ -11,9 +11,7 @@
 ##raabracadab
 ##aabracadabr
 
-table = []
 text = input('Type something: ')
 for i in range(len(text)):
-    table.append(text[i:]+text[:i])
-print(*table)
+    print(text[i:]+text[:i])
 
