@@ -75,5 +75,3 @@ def adjectives(fname):
                     else:
                         adj.append(forms[i])
     return adj
-
-print(adjectives('text.txt'))
