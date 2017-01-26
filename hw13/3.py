@@ -22,7 +22,7 @@ def match_verb_forms(line):
         match = present
     elif past:
         match = past
-    elif infinitive:
+    elif infinitive and not future:
         match = infinitive
     elif past_participle:
         match = past_participle
@@ -30,9 +30,9 @@ def match_verb_forms(line):
         match = present_participle
     elif transgressive_active:
         match = transgressive_active
-    elif transgressive_passive_past:
+    elif transgressive_passive_past and not past_participle:
         match = transgressive_passive_past
-    elif transgressive_passive_present:
+    elif transgressive_passive_present and not present_participle:
         match = transgressive_passive_present
     else:
         match = None
@@ -53,8 +53,8 @@ def main():
     forms = open_forms('test.txt')
     for i in range(len(forms)-1):
         if i < len(forms):
-            if match_verb_forms(forms[i] + forms[i+1]) and match_verb_forms(forms[i] + forms[i+1]) not in matches:
-                matches.append(match_verb_forms(forms[i] + forms[i+1]).group(0))
+            if match_verb_forms(forms[i] +' '+ forms[i+1]) and match_verb_forms(forms[i] + forms[i+1]) not in matches:
+                matches.append(match_verb_forms(forms[i] +' '+ forms[i+1]).group(0))
         else:
             if match_verb_forms(forms[i]) and match_verb_forms(forms[i]) not in matches:
                 matches.append(match_verb_forms(forms[i]).group(0))
