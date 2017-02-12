@@ -1,15 +1,15 @@
 ##Вариант 3. Программа должна открывать файл с русским текстом в utf-8 и сообщать про него следующую информацию:
 ##во сколько раз слов длины 3 больше, чем слов длины 1 (если слов длины 1 нет вообще, программа должна об этом сообщить)
 
-
-
 ## !!! Программа работает только с utf-8 без BOM !!!
 
 words = []
 with open('text.txt','r', encoding = 'utf-8') as f:
     text = f.read()
-    text = text.replace('\n',' ')
-    words = text.split(' ')
+    words_raw = text.split(' ')
+    words = []
+    for i in range(len(words_raw)):
+        words.extend(words_raw[i].split('\n'))
 
 len3 = 0
 len1 = 0
