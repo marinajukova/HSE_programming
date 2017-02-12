@@ -28,9 +28,16 @@ def main():
                 else:
                     print('Неправильно. У тебя ещё '+str(len(keys[n]) - i+1)+' попыток.')
                     i += 1
-            else:
-                print('У тебя закончились попытки. Правильный ответ: '+keys[n]+' '+clues[keys[n]])
-                n += 1
+            elif i == len(keys[n]):
+                response = input(keys[n]+'...')
+                if response == clues[keys[n]]:
+                    print('Правильно!')
+                    n += 1
+                    break
+                else:
+                    print('У тебя закончились попытки. Правильный ответ: '+keys[n]+' '+clues[keys[n]])
+                    n += 1
+                
             
 if __name__ == '__main__':
     main()
