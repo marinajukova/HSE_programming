@@ -19,6 +19,7 @@ def openforms(text):
         forms[i] = forms[i].strip('.,?*()«»!\'\":; ')
     return forms
 
+
 def freqlist(forms):
     freqs = {}
     for i in range(len(forms)):
@@ -28,21 +29,30 @@ def freqlist(forms):
             freqs[forms[i]] +=1
     return freqs
 
-def main():
-    with open ('Лесков.txt', 'r', encoding = 'utf-8') as f:
-        text = f.read()
-    forms = openforms(text)
-    freqs = freqlist(forms)
-    print(len(forms)) ## 5
-    with open('freq.csv', 'w', encoding='utf-8') as f: ##8
+
+def freqlist_to_csv(freqs):
+    with open('freq.csv', 'w', encoding='utf-8') as f:
         output = csv.writer(f, delimiter=',')
         header = ['слово', 'частота']
         output.writerow(header)
         for key in freqs:
             output.writerow([key, freqs[key]])
-    agos = re.findall('(?:(?:[А-Яа-яіѢѣ])+[\s,.!\?:;"\(\)\'»\n\t—]+?){3}[А-Яа-яiѢѣ]+?аго [А-Яа-яiѢѣ]+?(?:а|и)[\s,.!\?:;"\(\)\'»\n\t—]{,5}(?:[А-Яа-яiѢѣ]+?[\s,.!\?;:—"\(\)\'»\n\t]+?){3}',text) 
+
+
+def agosforms(text):
+    agos = re.findall('(?:(?:[А-Яа-яіѢѣЁё])+[\s,.!\?:;"\(\)\'»\n\t—]+?){3}[А-Яа-яiѢѣ]+?аго [А-Яа-яiѢѣ]+?(?:а|и)[\s,.!\?:;"\(\)\'»\n\t—]{,5}(?:[А-Яа-яiѢѣ]+?[\s,.!\?;:—"\(\)\'»\n\t]+?){3}',text)
     with open('agos.txt', 'w', encoding='utf-8') as f:
-        output = f.write('\n'.join(agos)) ##10
+        output = f.write('\n'.join(agos))
+
+
+def main():
+    with open ('Лесков.txt', 'r', encoding = 'utf-8') as f:
+        text = f.read()
+    forms = openforms(text)
+    print(len(forms)) ## 5
+    freqs = freqlist(forms)
+    freqlist_to_csv(freqs) ##8
+    agosforms(text) ##10
 
 if __name__ == '__main__':
     main()
