@@ -1,27 +1,56 @@
-##Вариант 3. Программа должна открывать файл с русским текстом в utf-8 и сообщать про него следующую информацию:
-##во сколько раз слов длины 3 больше, чем слов длины 1 (если слов длины 1 нет вообще, программа должна об этом сообщить)
+##3. Программа с помощью отдельной функции принимает от пользователя название файла с английским текстом, читает этот файл и сообщает:
+##- выводит сколько в тексте существительных с суффиксом -hood,
+##- выводит какое существительное имеет минимальную частотность
+##- выводит слова, от которых эти существительные образованы (например, если нашлось childhood, то нужно напечатать child).
 
-## !!! Программа работает только с utf-8 без BOM !!!
+def opentext(fname):
+    forms = []
+    with open (fname, 'r', encoding = 'utf-8') as f:
+        text = f.read()
+    text = text.lower()
+    forms = text.split()
+    for i in range(len(forms)):
+        forms[i] = forms[i].strip('.,!?*()«»\'"')
+    return forms
 
-words = []
-with open('text.txt','r', encoding = 'utf-8') as f:
-    text = f.read()
-    words_raw = text.split(' ')
-    words = []
-    for i in range(len(words_raw)):
-        words.extend(words_raw[i].split('\n'))
 
-len3 = 0
-len1 = 0
-for word in words:
-    if len(word) == 3:
-        len3 += 1
-    elif len(word) == 1:
-        len1 += 1
+def adj_hood(fname):
+    words = opentext(fname)
+    hoods = []
+    for i in range(len(words)):
+        if len(words[i])>4:
+          if words[i][-1] == 'd':
+              if words[i][-2] == 'o':
+                  if words[i][-3] == 'o':
+                     if words[i][-4] == 'h':
+                         if words[i] not in hoods:
+                             hoods.append(words[i])
+    return hoods
 
-if len1 == 0:
-    print('В файле нет слов длины 1.')
-elif len3 == 0:
-    print('В файле нет слов длины 3.')
-else:
-    print('В файле в '+str(len3/len1)+' раз больше слов длины 3, чем слов длины 1.')
+def count_frequency(fname, word):
+    words = opentext(fname)
+    word_freq = 0
+    for i in range(len(words)):
+        if words[i] == word:
+            word_freq += 1
+    return word_freq
+
+def main():
+    fname = input('Введите имя файла: ')
+    hoods = adj_hood(fname)
+    print('В тексте встретилось', len(hoods), 'прилагательных с суффиксом -hood.')
+    freq = []
+    for i in range(len(hoods)):
+        freq.append(count_frequency(fname, hoods[i]))
+    min_freq = []
+    for i in range(len(hoods)):
+        if freq[i] == min(freq):
+            min_freq.append(hoods[i])
+    print('Самые редкие прилагательные с суффиксом -hood: ', ', '.join(min_freq))
+    roots = []
+    for i in range(len(hoods)):
+        roots.append(hoods[i][0:-4])
+    print('Корни прилагательных с суффиксом -hood: ', ', '.join(roots))
+    
+if __name__ == '__main__':
+    main()
