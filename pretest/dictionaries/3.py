@@ -9,7 +9,9 @@
 ## Программа должна спрашивать эту информацию у 7 пользователей.
 ## Потом она должна загадывать вам мечту, или мечту и еду, или музыкальную группу, или музыкальную группу и еду
 ##(выбирая, что именно загадать, случайным образом) и предлагать угадать, что это был за пользователь.
+
 import random
+
 
 def ask():
     user_info = []
@@ -23,6 +25,7 @@ def ask():
     user_info.append([age, food, musician, dream])
     return user_info
 
+
 def guess(database_dictionary):
     person = random.choice(list(database_dictionary.keys()))
     clue = random.choice(['его/её мечта: '+database_dictionary[person][3], 'его/её любимая музыкальная группа: '+database_dictionary[person][2], 'его/её мечта: '+database_dictionary[person][3]+'\nего/её любимая еда: '+database_dictionary[person][1], 'его/её любимая музыкальная группа: '+database_dictionary[person][2]+'\nего/её любимая еда: '+database_dictionary[person][1]])
@@ -32,6 +35,7 @@ def guess(database_dictionary):
     else:
         return 'Нет, неправильно, это - '+person
 
+
 def main():
     database = {}
     i = 0
@@ -40,6 +44,7 @@ def main():
         i += 1
         database[answer[0]] = answer[1]
     print(guess(database))
+
 
 if __name__ == '__main__':
     main()
