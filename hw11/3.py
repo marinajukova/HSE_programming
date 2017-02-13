@@ -1,56 +1,21 @@
-##3. Программа с помощью отдельной функции принимает от пользователя название файла с английским текстом, читает этот файл и сообщает:
-##- выводит сколько в тексте существительных с суффиксом -hood,
-##- выводит какое существительное имеет минимальную частотность
-##- выводит слова, от которых эти существительные образованы (например, если нашлось childhood, то нужно напечатать child).
+## 3. Сохранить статью "лингвистика" Википедии в файл в формате UTF-8. Программа должна читать этот файл и
+## заменять в нём все формы слова "язык" на соответствующие формы слова "шашлык".
+## То, что получится, она должна записывать в другой текстовый файл.
+## Заменяться должны только формы этого слова. Т. е. если Вам нужно заменить слово "кит" на слово "кот",
+## слово "китовый" на слово "котовый" заменяться не должно. При замене нужно пользоваться функцией re.sub.
+## Если слово было написано с большой буквы, то и после замены оно должно быть написано с большой буквы. 
 
-def opentext(fname):
-    forms = []
-    with open (fname, 'r', encoding = 'utf-8') as f:
-        text = f.read()
-    text = text.lower()
-    forms = text.split()
-    for i in range(len(forms)):
-        forms[i] = forms[i].strip('.,!?*()«»\'"')
-    return forms
-
-
-def adj_hood(fname):
-    words = opentext(fname)
-    hoods = []
-    for i in range(len(words)):
-        if len(words[i])>4:
-          if words[i][-1] == 'd':
-              if words[i][-2] == 'o':
-                  if words[i][-3] == 'o':
-                     if words[i][-4] == 'h':
-                         if words[i] not in hoods:
-                             hoods.append(words[i])
-    return hoods
-
-def count_frequency(fname, word):
-    words = opentext(fname)
-    word_freq = 0
-    for i in range(len(words)):
-        if words[i] == word:
-            word_freq += 1
-    return word_freq
+import re
 
 def main():
-    fname = input('Введите имя файла: ')
-    hoods = adj_hood(fname)
-    print('В тексте встретилось', len(hoods), 'прилагательных с суффиксом -hood.')
-    freq = []
-    for i in range(len(hoods)):
-        freq.append(count_frequency(fname, hoods[i]))
-    min_freq = []
-    for i in range(len(hoods)):
-        if freq[i] == min(freq):
-            min_freq.append(hoods[i])
-    print('Самые редкие прилагательные с суффиксом -hood: ', ', '.join(min_freq))
-    roots = []
-    for i in range(len(hoods)):
-        roots.append(hoods[i][0:-4])
-    print('Корни прилагательных с суффиксом -hood: ', ', '.join(roots))
-    
+    with open('Лингвистика.txt', 'r', encoding = 'utf-8') as f:
+        text = f.read()
+    lang = 'язык((?:а(?:ми?|х)?)|и|о(?:в|м)|у|е)?([\s,.!\?:"\(\)\'»])'
+    Lang = 'Язык((?:а(?:ми?|х)?)|и|о(?:в|м)|у|е)?([\s,.!\?:"\(\)\'»])'
+    new_text = re.sub(lang,'шашлык\\1\\2', text)
+    new_text = re.sub(Lang,'Шашлык\\1\\2', new_text)
+    with open('Новая лингвистика.txt', 'w', encoding = 'utf-8') as f:
+        f.write(new_text)
+
 if __name__ == '__main__':
     main()
