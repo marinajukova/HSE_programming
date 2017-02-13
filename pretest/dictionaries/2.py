@@ -12,6 +12,7 @@ def revert(dictionary):
         reverted[dictionary[key]] = key
     return reverted
 
+
 def russian_to_latin_dictionary(lines):
     raw = {}
     rus_to_lat = {}
@@ -27,6 +28,7 @@ def russian_to_latin_dictionary(lines):
             rus_to_lat[key] = raw[key]
     return rus_to_lat
 
+
 def latin_to_russian_dictionary(lines):
     raw = {}
     lat_to_rus = {}
@@ -41,6 +43,7 @@ def latin_to_russian_dictionary(lines):
             lat_to_rus[key] = raw[key]
     return lat_to_rus
 
+
 def main():
     with open ('latin.txt', 'r', encoding = 'utf-8') as f:
         lines = f.readlines()
@@ -49,6 +52,7 @@ def main():
             lines[i] = re.sub(';', ',', lines[i])
     print(latin_to_russian_dictionary(lines))
     print(russian_to_latin_dictionary(lines))
+
     
 if __name__ == '__main__':
     main()
