@@ -3,29 +3,29 @@
 import re
 
 def three_consonants(text): ## 1. Найти в тексте слова, в которых есть три согласных подряд.
-    cons3 = re.findall('[^\s,.!\?:"\(\)\'«»\n]*?[йцкнгшщзхфвпрлджчсмтб]{3}.+?[\s,.!\?:"\(\)\'»\n]', text, re.I)
+    cons3 = re.findall('[^\s,.!\?:"\(\)\'«»\n]*?[йцкнгшщзхфвпрлджчсмтб]{3}[^\s,.!\?:"\(\)\'«»\nйцкнгшщзхфвпрлджчсмтб]*?[^\s,.!\?:"\(\)\'«»\n]*?[\s,.!\?:"\(\)\'»\n]', text, re.I)
     for i in range(len(cons3)):
         cons3[i] = cons3[i].strip('\s,.!\?:"\(\)\'»\n\t ')
     return cons3
 def startwith(text): ## 2. Найти все слова, которые начинаются с а или о, а вторая буква -- б или в.
-    abcs = re.findall('[\s,.!\?:"\(\)\'«\n ](?:а|о)(?:б|в).+?[\s,.!\?:"\(\)\'»\n]', text, re.I)
+    abcs = re.findall(r'\b(?:а|о)(?:б|в).+?[\s,.!\?:"\(\)\'»\n]', text, re.I)
     for i in range(len(abcs)):
-        abcs[i] = abcs[i].strip('\s,.!\?:"\(\)\'»\n\t')
+        abcs[i] = abcs[i].strip('\s,.!\?:"\(\)\'»\n\t ')
     return abcs
 
 def proper_nouns(text): ## 3. Найти все имена собственные, кроме тех, которые стоят начале предложения.
     proper = re.findall('[а-яёa-z0-9] [А-ЯЁA-Z][а-яёa-z]+?[\s,.!\?:"\(\)\'»\n]' , text)
     for i in range(len(proper)):
         proper[i] = proper[i].split()[1]
-        proper[i] = proper[i].strip('\s,.!\?:"\(\)\'»\n\t')
+        proper[i] = proper[i].strip('\s,.!\?:"\(\)\'»\n\t ')
     return proper
 
 def analytical_future(text): ## 4. Найти все конструкции типа "буд(у/ешь/ет/ут/ем) + инфинитив".
-    future = re.findall(r'буд(?:е(?:шь|те?|м)|ут?) .+?(?:а|е|и)ть(?:ся)?', text, re.I)
+    future = re.findall('буд(?:е(?:шь|те?|м)|ут?) .+?(?:а|е|и)ть(?:ся)?', text, re.I)
     return future
 
 def polysyllabic(text): ## 5. Найти все слова, которые состоят из 5 и более слогов.
-    poly = re.findall('[\s,.!\?:"\(\)\'«\n ](?:[йцкнгшщзхфвпрлджчсмтб]*?[уеыаоюяиэ]){5,}[а-я]*?[\s,.!\?:"\(\)\'»\n]', text)
+    poly = re.findall(r'\b(?:[йцкнгшщзхфвпрлджчсмтб]*?[уеыаоюяиэ]){5,}[а-я]*?[\s,.!\?:"\(\)\'»\n]', text)
     for i in range(len(poly)):
         poly[i] = poly[i].strip('\s,.!\?:"\(\)\'«»\n\t ')
     return poly
