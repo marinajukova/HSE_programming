@@ -35,7 +35,7 @@ def freqlist_to_csv(freqs):
         output = csv.writer(f, delimiter=',')
         header = ['слово', 'частота']
         output.writerow(header)
-        for key in freqs:
+        for key in sorted(freqs):
             output.writerow([key, freqs[key]])
 
 
