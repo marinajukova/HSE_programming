@@ -4,7 +4,7 @@
 ## cp1251 - кодировка винды
 ## utf-8 - кодировка для настоящих прогеров
 
-## это про csv
+#### это про csv
 ##import csv
 ##
 ### читаем csv
@@ -15,7 +15,7 @@
 ##    for row in text:
 ##        print(row)
 ##      
-### пишем csv
+#### пишем csv
 ##numbers = [[x, x**2, x**3] for x in range(10)]
 ##with open('out.csv', 'w', encoding='utf-8') as n:
 ##    text = csv.writer(n, delimiter=',')

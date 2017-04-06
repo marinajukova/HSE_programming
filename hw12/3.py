@@ -24,9 +24,11 @@ def open_text_phrases(fname):
 
 def main():
     phrase_list = open_text_phrases('text.txt')
-    word_length_list = [w+'_'+str(len(w)) for phrase in phrase_list for w in phrase.split()]
+    word_length_list = [[w, len(w)] for phrase in phrase_list for w in phrase.split()]
+    template = '{}_{}'
     for word in word_length_list:
-        print(word)
+        print(template.format(word[0], word[1]))
+        
 
 if __name__ == '__main__':
     main()
