@@ -1,0 +1,37 @@
+Субвентрикулярная зона, или Субэпендимная зона (англ. Subventricular zone, SVZ) в эмбриональном мозге — это область первичной миграции нейро- и глиобластов из вентрикулярной герминативной зоны [Викторов, 2001]. Вместе они составляют боковую стенку желудочков мозга. В головном мозге взрослых млекопитающих стенка желудочков состоит из слоя эпендимоцитов и клеток в субэпендимном слое. Суммарно эти два слоя называют перивентрикулярной [Викторов, 2001] или субвентрикулярной [Doetsch et al., 1999] зоной. Субвентрикулярная зона простирается вдоль большей части латерально расположенной внутренней поверхности боковых желудочков мозга. Наряду с субгранулярной зоной зубчатой извилины гиппокампа, субвентрикулярная зона является источником новых нейронов на протяжении всей взрослой жизни организма(см. нейрогенез во взрослом мозге). Она содержит самую крупную популяцию пролиферирующих клеток во взрослом мозге грызунов (,,3), обезьян (,5,6,7,8,9) и человека (,11). У некоторых животных, ростральный миграционный тракт соединяет субвентрикулярную зону с обонятельной луковицей и служит путём тангенциальной миграции нейробластов.
+В субвентрикулярной зоне выделяют четыре типа клеток:
+Реснитчатые эпендимоциты типа E, обращенные в полость желудочка и стимулирующие циркуляцию цереброспинальной жидкости.
+Пролиферирующие нейробласты типа А, объединяющиеся в цепочки и мигрирующие по направлению к обонятельной луковице. Отличительной чертой этих клеток является экспрессия ими белков PSA-NCAM, Tuj1(Class III β-Tubulin), и Hu.
+Медленно пролиферирующие клетки типа B, образующие глиальные трубки, внутри которых происходит миграция нейробластов типа A. Для них характерна экспрессия белков нестина и GFAP.
+Активно пролиферирующие клетки типа С, образующие скопления между мигрирующими цепочками клеток типа A. Их отличает экспрессия нестина.
+
+
+ Клиническое значение 
+По данным одного исследования, в мышиной модели глиобластомы, вызванной точечной делецией в гене p53, накопление мутантных белков p53 отмечается сначала в субвентрикулярной зоне, откуда и начинается распространение клеток прогениторно-подобного фенотипа, дающих начало опухоли.
+
+
+ Литература 
+Abrous DN, Koehl M, Le Moal M. (2005) Adult neurogenesis: from precursors to network and physiology. Physiol Rev. 85(2):523-69. PMID 15788705 полный текст в свободном доступе (англ.)
+Alvarez-Buylla A, Garcia-Verdugo JM. (2002) Neurogenesis in adult subventricular zone. J Neurosci. 22(3):629-34. PMID 11826091 полный текст в свободном доступе (англ.)
+И. В. Викторов (2001) Стволовые клетки мозга млекопитающих: биология стволовых клеток in vivo и in vitro. полный текст в формате PDF
+
+
+ Примечания 
+
+Altman J. Autoradiographic investigation of cell proliferation in the brains of rats and cats. Anat Rec 145: 573—592, 1963.
+Privat A and Leblond CP. The subependymal layer and neighboring region in the brain of the young rat. J Comp Neurol 146: 277—302, 1972
+Smart I. The subependymal layer of the mouse brain and its cell production as shown by radioautography after thymidine-H3 injection. J Comp Neurol 116: 325—347, 1961.
+Gould E, Reeves AJ, Fallah M, Tanapat P, Gross CG, and Fuchs E. Hippocampal neurogenesis in adult Old World primates. Proc Natl Acad Sci USA 96: 5263-5267, 1999.
+Gould E, Reeves AJ, Graziano MS, and Gross CG. Neurogenesis in the neocortex of adult primates. Science 286: 548—552, 1999.
+Gould E, Vail N, Wagers M, and Gross CG. Adult-generated hippocampal and neocortical neurons in macaques have a transient existence. Proc Natl Acad Sci USA 98: 10910-10917, 2001.
+Kaplan MS. Formation and turnover of neurons in young and senescent animals: an electronmicroscopic and morphometric analysis. Ann NY Acad Sci 457: 173—192, 1985.
+Kornack DR and Rakic P. The generation, migration, and differentiation of olfactory neurons in the adult primate brain. Proc Natl Acad Sci USA 98: 4752-4757, 2001.
+Pencea V, Bingaman KD, Freedman LJ, and Luskin MB. Neurogenesis in the subventricular zone and rostral migratory stream of the neonatal and adult primate forebrain. Exp Neurol 172: 1-16, 2001.
+Bernier PJ, Vinet J, Cossette M, and Parent A. Characterization of the subventricular zone of the adult human brain: evidence for the involvement of Bcl-2. Neurosci Res 37: 67-78, 2000.
+Eriksson PS, Perfilieva E, Bjork-Eriksson T, Alborn AM, Nordborg C, Peterson DA, and Gage FH. Neurogenesis in the adult human hippocampus. Nat Med 4: 1313—1317, 1998.
+Doetsch F., Caille I., Lim D. A., Garcia-Verdugo J. M., Alvarez-Buylla A. Subventricular zone astrocytes are neural stem cells in the adult mammalian brain // Cell, 1999, V. 97, pp. 703–716
+
+
+ Ссылки 
+
+ субвентрикулярная зона: тематические медиафайлы на Викискладе
