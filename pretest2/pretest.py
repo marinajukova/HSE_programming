@@ -24,15 +24,13 @@ def open_file(name):
 def get_words(raw_text):
     word_arr = []
     raw_lines = raw_text.split()
-    word_lines = re.findall('<w>.+</w>',raw_text) ##(<w>.+</w>)(:?[«»,.!?-*]|\n\d+)
+    word_lines = re.findall('(<w>.+</w>)((?:\n?[«»,.! \?\-])*(?:\n?[01234567])*)',raw_text)
     for i in range(len(word_lines)):
-        word_lines[i] = word_lines[i].strip('<w>')
-        word_lines[i] = word_lines[i].strip('</')
-        line = word_lines[i].split('<ana')
+        line = word_lines[i][0].strip('<w>').strip('</').split('<ana')
         for e in range(len(line)):
             if e > 0:
                 line[e] = line[e].strip(' />')
-        word_arr.append([line[0]] + [len(line)-1] + line[1:])
+        word_arr.append([line[0]] + [len(line)-1] + [word_lines[i][1].strip().strip(' ')] + line[1:])
     return word_arr
 
 
@@ -50,7 +48,7 @@ def count_all_pos(word_arr):
     pos_dict = {}
     for i in range(len(word_arr)):
         for el in range(len(word_arr[i])):
-            if el > 1:
+            if el > 2:
                 pos = re.search('gr="(\w+)' , word_arr[i][el]).group(1)
                 if pos not in pos_dict:
                     pos_dict[pos] = 1
@@ -65,8 +63,12 @@ def count_all_pos(word_arr):
 def find_all_instr(word_arr):
     instr_words_dict = {}
     text = []
-    for word in word_arr:
-        text.append(word[0])
+    for el in range(len(word_arr)):
+        word = word_arr[el]
+        if re.match('«|\d', word[2]):
+            text.append(word[0]+' '+word[2])
+        else:
+            text.append(word[0]+word[2])
     for n in range(len(word_arr)):
         word = word_arr[n]
         for i in range(len(word)):
@@ -89,7 +91,7 @@ def main():
     average_anas = count_average_anas(word_arr)
     print(average_anas) ## 5
     count_all_pos(word_arr) ## 8
-    print(find_all_instr(word_arr)) ##10
+    find_all_instr(word_arr) ##10
 
 
 if __name__ == '__main__':
