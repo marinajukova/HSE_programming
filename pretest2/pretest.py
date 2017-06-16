@@ -24,7 +24,7 @@ def open_file(name):
 def get_words(raw_text):
     word_arr = []
     raw_lines = raw_text.split()
-    word_lines = re.findall('(<w>.+</w>)((?:\n?[«»,.! \?\-])*(?:\n?[01234567])*)',raw_text)
+    word_lines = re.findall('(<w>.+</w>)((?:\n?[«»,.! \?\-])*(?:\n?[01234567])*)', raw_text)
     for i in range(len(word_lines)):
         line = word_lines[i][0].strip('<w>').strip('</').split('<ana')
         for e in range(len(line)):
@@ -49,7 +49,7 @@ def count_all_pos(word_arr):
     for i in range(len(word_arr)):
         for el in range(len(word_arr[i])):
             if el > 2:
-                pos = re.search('gr="(\w+)' , word_arr[i][el]).group(1)
+                pos = re.search('gr="(\w+)', word_arr[i][el]).group(1)
                 if pos not in pos_dict:
                     pos_dict[pos] = 1
                 else:
@@ -65,10 +65,13 @@ def find_all_instr(word_arr):
     text = []
     for el in range(len(word_arr)):
         word = word_arr[el]
-        if re.match('«|\d', word[2]):
-            text.append(word[0]+' '+word[2])
+        d = re.match('\d+', word[2])
+        if '«' in word[2]:
+            text.append(word[0] + ' «')
+        elif d:
+            text.append(word[0] + ' ' + d.group(0) +' ')
         else:
-            text.append(word[0]+word[2])
+            text.append(word[0] + word[2] + ' ')
     for n in range(len(word_arr)):
         word = word_arr[n]
         for i in range(len(word)):
@@ -81,7 +84,7 @@ def find_all_instr(word_arr):
         for word in instr_words_dict:
             x = instr_words_dict[word] 
             if x-3 >= 0 and x+3 < len(text):
-                f.writelines(' '.join(text[x-3:x])+'\t'+word+'\t'+' '.join(text[x+1:x+4])+'\n')
+                f.writelines(''.join(text[x-3:x])+'\t'+word+'\t'+''.join(text[x+1:x+4])+'\n')
     return instr_words_dict
 
 
