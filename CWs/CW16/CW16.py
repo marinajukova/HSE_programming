@@ -81,7 +81,7 @@ def main():
                 texts[f] = text
     raw_texts = list(texts.values())
     for t in texts:
-        print('\nИзвлекаем ключевые слова для текста {}'.format(t.split('.')[0]))
+        print('\nИзвлекаем ключевые слова для текста "{}"'.format(t.split('.')[0]))
         kwords = keywords(texts[t], raw_texts)
         for key in kwords:
             print (key, kwords[key])
