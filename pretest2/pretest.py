@@ -60,8 +60,7 @@ def count_all_pos(word_arr):
     return pos_dict
 
 
-def find_all_instr(word_arr):
-    instr_words_dict = {}
+def make_text(word_arr):
     text = []
     for el in range(len(word_arr)):
         word = word_arr[el]
@@ -72,6 +71,11 @@ def find_all_instr(word_arr):
             text.append(word[0] + ' ' + d.group(0) +' ')
         else:
             text.append(word[0] + word[2] + ' ')
+    return text
+
+
+def find_all_instr(word_arr, text):
+    instr_words_dict = {}
     for n in range(len(word_arr)):
         word = word_arr[n]
         for i in range(len(word)):
@@ -79,12 +83,17 @@ def find_all_instr(word_arr):
                 instr = re.search('ins', word[i])
                 if instr:
                     if word[0] not in instr_words_dict:
-                        instr_words_dict[word[0]] = n 
+                        instr_words_dict[word[0]] = [n]
+                        print(instr_words_dict[word[0]])
+                    elif n not in instr_words_dict[word[0]]:
+                        instr_words_dict[word[0]] += [n]
+                        print(instr_words_dict[word[0]])
     with open('words in instrumentalis.txt', 'w', encoding='utf-8') as f:
         for word in instr_words_dict:
-            x = instr_words_dict[word] 
-            if x-3 >= 0 and x+3 < len(text):
-                f.writelines(''.join(text[x-3:x])+'\t'+word+'\t'+''.join(text[x+1:x+4])+'\n')
+            for i in range(len(instr_words_dict[word])):
+                x = instr_words_dict[word][i] 
+                y = min(x+4, len(text)-1)
+                f.writelines(''.join(text[x-3:x])+'\t'+word+'\t'+''.join(text[x+1:y])+'\n')
     return instr_words_dict
 
 
@@ -94,7 +103,7 @@ def main():
     average_anas = count_average_anas(word_arr)
     print(average_anas) ## 5
     count_all_pos(word_arr) ## 8
-    find_all_instr(word_arr) ##10
+    find_all_instr(word_arr, make_text(word_arr)) ##10
 
 
 if __name__ == '__main__':
