@@ -105,7 +105,7 @@ def find_spec_bigr_in_sentence(word_list):
 
 def find_all_spec_bigr(raw_texts_dict):
     sbec_bigr = []
-    texts = raw_texts_dict.values
+    texts = raw_texts_dict.values()
     for text in texts:
         sentences = get_sentences(text)
         for sentence in sentences:
@@ -129,6 +129,8 @@ def main():
     write_out_count_sentences(raw_texts_dict) ##5
     file_meta = find_file_meta(raw_texts_dict)
     write_out_file_meta(file_meta) ##8
+    spec_bigr =  find_all_spec_bigr(raw_texts_dict)
+    write_out_spec_bigr(spec_bigr)
     
 
 
